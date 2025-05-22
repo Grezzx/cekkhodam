@@ -1,192 +1,74 @@
-<!DOCTYPE html>
-<html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cek khodam</title>
-    <style>
-        /* General styles */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
 
-body {
-    background: url('https://c.top4top.io/p_3112m8cz81.jpg');
-    background-size: cover, 900% 400%; /* Ukuran gambar dan gradien */
-    background-blend-mode: overlay; /* Menggabungkan gambar dan gradien */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+:root {
+--warna-bg: rgba(0, 0, 0, .5); 
+--warna-teks: #fff;
+--warna-bingkai: #fff;
+--bingkai: 8px;
+--bingkai-kiri: 2px solid var(--warna-bingkai);
+--bingkai-kanan: 2px solid var(--warna-bingkai);
+--gaya-font: 'Quicksand', sans-serif;
+--gaya-font2: 'Dancing Script', sans-serif;
 }
+@keyframes fanim {0% {background-position: 0% 0%;}25% {background-position: 100% 100%;} 50% {background-position: 0% 100%;} 75% {background-position: 50% 50%;} 100% {background-position: 0% 0%;}}
+body{background-color:#000;font-family:var(--gaya-font);padding: 20px 25px;-webkit-user-select: none; -ms-user-select: none; user-select: none;} a{text-decoration:none;}
+body::before{content:"\00A9  niass (uqang keren)";padding:8px;border-radius:12px;background:black;color:white;opacity:.7;font-size:9px;position:fixed;bottom:20px;left:20px;z-index:999}
+#bodyblur{opacity:.2;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.3);transition:all 1s ease;} 
+#wallpaper{width:100%;height:100%;transform: scale(2);transition:all 1.3s ease;}
+#beneranblur{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.3);-webkit-backdrop-filter:blur(0px); backdrop-filter:blur(0px);transition:all 3s ease;}
 
+@keyframes jj{0%  {transform: scale(1.1);} 50% {transform: scale(1.2);} 100% {transform: scale(1.1);}}
+@keyframes rts{from {transform:scale(.1);} to {transform:scale(1);}}
+@keyframes rto{from {transform:scale(1);} to {transform:scale(1.1);}}
+@keyframes aniopa{0% {transform: scale(1);} 50% {transform: scale(.75);} 100% {transform: scale(1);}}
+@keyframes rtf{from {transform: rotate(0deg);} to {transform: rotate(360deg);}} @keyframes rt{from {transform: scale(.9);/* transform: rotate(-5deg); */} to {transform: scale(1);/* transform: rotate(5deg); */}}
+@keyframes kont{0%  {left:-1px; top:-3px;} 50% {left:1px; top:3px;} 100% {left:-1px; top:-3px;}}
 
+blockquote{position:absolute;opacity:0;visibility:hidden;background:var(--warna-bg);border-radius:none;box-shadow: rgba(255,255,255, 0.3) 0px 7px 29px 0px;transform: scale(.1);transition:all 1s ease;margin-top:120px;margin-left:0;margin-right:0;color:var(--warna-teks);}
+blockquote{width:400px;line-height:1.3em;padding:20px 15px 10px 15px;margin:0 15px;margin-bottom:10px;border: 1px solid #fff;border-radius:15px}
+blockquote p{font-size:15px;font-weight:700;line-height:1.45em;text-shadow: 0px 2px 2px rgba(0, 0, 0, .8);transition:all .5s ease;}
+#kalimat6ngetik, .kiri{text-align:left !important}
+blockquote p i{font-style:normal;font-size:13px;font-weight:400;}
+blockquote p b.alt{font-size:17px;}
+blockquote p b.merah{color:red}
+blockquote p b.kuning{color:yellow}
+blockquote p b.putih{padding-left:3px;padding-right:3px;background:white;}
+blockquote p b.garismerah{font-weight:700;border-bottom:2px solid red}
+blockquote p b.gariskuning{font-weight:700;border-bottom:2px solid yellow}
+blockquote p:not(#opsL, #kalimat){display:none;}
+blockquote p:not(#kalimat6ngetik){text-align:center;}
+blockquote > #opsL{margin-right:0px;text-align:right !important;font-size:9px;font-weight:400;line-height:0;margin-top:24px;color:white;opacity:0;transition:all .2s ease;}
 
-        .container {
-            width: 90%;
-            max-width: 350px;
-            padding: 20px;
-            background-color: #d500003b; /* Lighter dark gray background */
-            border: 1px solid #ffffff; /* Dark gray border */
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8); /* Darker black shadow */
-            border-radius: 10px; /* Rounded corners */
-            text-align: center; /* Center text and button */
-            position: relative;
-        }
+@keyframes leaves {0% {transform: scale(1.0);} 100% {transform: scale(.85);}}
+#loveIn{animation: leaves .7s ease-in-out infinite alternate;-webkit-animation: leaves 1s ease-in-out infinite alternate;} 
+.lovein{background:#fff;border-radius:50%;width:40px;height:40px;padding:10px;font-size:30px;display:flex;align-items:center;text-align:center;justify-content:center;transition:all .3s ease;}
+.lovein:hover{cursor:pointer}
+.lovein svg{stroke:#ff0000;stroke-width:1.3;fill:none;width:35px;height:35px}
 
-        .container:before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2));
-            z-index: -1;
-            border-radius: 10px;
-        }
+#Tombol, #Tombol2, #TombolWA{position:relative;opacity:0;margin-left:auto;margin-right:auto;display:flex;align-items:left;list-style:none;transition:all .8s ease;}
+#Tombol a, #Tombol2 a, #TombolWA a{cursor:pointer;display:inline-flex;align-items:center; margin:0;margin:10px;transition:all .2s ease;padding:10px;outline:0;border:1px solid white;border-radius:8px;line-height:15px;background:var(--warna-bg);color:white;font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;box-shadow: rgba(255,255,255, 0.15) 0px 7px 29px 0px;z-index:1}
 
-        h1 {
-    font-weight: bold; /* Bold font for headings */
-    font-family: "Times New Roman", Times, serif;
-    color: red; /* Warna teks */
-    text-shadow: 0 12px 30px rgba(0, 0, 0, 0.9); /* Efek bayangan */
-}
-        p {
-          font-family: "Courier New", Courier, monospace; 
-          font-size: 20px; 
-          color: gray;
-          text-shadow: 0 12px 30px rgba(0, 0, 0, 0.9); 
-        }
-        input[type="text"] {
-            width: 80%;
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #000000;
-            border-radius: 50vh;
-            margin-top: 20px;
-        }
+#Content{animation-name:none;animation-duration: 3s;animation-iteration-count: infinite;position:relative;opacity:0;margin-top:50px;width:100%;height:180px;transition:all .7s ease;}
+#Content > *{display:flex;align-items:center;justify-content:center;margin-top:1px;}
+.kumpulanstiker > img{display:none;background:rgba(255,255,255, .7);box-shadow: 0 4px 30px rgba(255,255,255, 0.2);backdrop-filter: blur(5px);-webkit-backdrop-filter: blur(5px);border: 1px solid rgba(255, 255, 255, 1);border-radius: 50%;padding:10px;width:92px;height:92px;margin:8px 0;}
+#fotostiker{opacity:.1;transition:all 1.2s ease;transform: scale(.1);}
+.halo{font-size:17px !important;position:relative;margin:15px 0 0 0} 
+.halo.sty2{align-items:center !important;text-align:left !important;font-size:14px !important;font-weight:400;}
+.halo.sty3{position:absolute !important;font-size:14px !important;font-weight:400 !important;margin:30px 20px !important;}
+#kalbawah{position: absolute;opacity:0;transform: scale(.3);margin:8px 0;font-family:var(--gaya-font2);font-size:20px;font-weight:700;color:white;text-shadow: 0px 2px 2px rgba(0, 0, 0, .8);transition:all .5s ease;}
+#tanggal{position: absolute;opacity:0;transform: scale(.3);transition:all .5s ease;}
 
-        button[type="submit"], button[type="button"] {
-            padding: 10px 30px;
-            font-size: 16px;
-            background-color: #ffffff;
-            color: #000000;
-            border: none;
-            border-radius: 50vh;
-            cursor: pointer;
-            margin-top: 20px;
-        }
+#fotolove img{transition:all .5s ease;width:75px;height:75px;padding:0;background:none}
+#ket, #kot, #ketgeser, .halo{text-shadow: 0px 2px 2px rgba(0, 0, 0, .8);font-size:17px;font-weight:700;color:white}
+#ket, #kot{transition:all .7s ease;margin-top:20px !important;font-size:12px;font-weight:400;opacity:.8}
+#kot a{font-weight:700;color:yellow}
 
-        #khodam-info {
-            font-size: 18px;
-            font-family: "Courier New", Courier, monospace;
-            color: white;
-            font-weight: bold;
-            margin-top: 20px;
-            padding: 20px;
-            background-color: #555;
-            border-radius: 10px;
-            border: 1px solid #fff;
-            width: 100%;
-            box-sizing: border-box; /* Ensure padding doesn't affect total width */
-        }
-        
-        footer {
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        text-align: center;
-        background-color: #f0f0f0;
-        padding: 10px 0;
-    }
+.swal2-modal > *{color:white}
+.swal2-title{line-height:1.3em;font-size:18px;text-align:center;padding:15px 30px 0 30px;}
+.swal2-container.swal2-backdrop-show{background: rgba(0,0,0,.5);}
+.swal2-timer-progress-bar-container > *{opacity:.7;background:#00B6FF;margin:0 2px}
+.swal2-modal{box-shadow: rgba(255,255,255, 0.3) 0px 7px 29px 0px;background:rgba(0,0,0,.9);max-width:320px;border-right:var(--bingkai-kanan);border-left:var(--bingkai-kiri);border-radius:4px;top:-50px;}
 
-    footer p {
-        margin: 0;
-    }
-
-    footer a {
-        color: red; /* warna link */
-        text-decoration: none; /* hilangkan garis bawah */
-    }
-
-    footer a:hover {
-        text-decoration: underline; /* garis bawah pada hover */
-    }
-    </style>
-</head>
-<body>
-    <script src="https://cdn.rawgit.com/bungfrangki/efeksalju/2a7805c7/efek-salju.js"></script>
-
-    <center> 
-       <img src="https://c.top4top.io/p_3110ys7dn0.png" width="75%"><br>
-       <br> 
-
-    <div class="container" id="main-page">
-        <h1>Cek Khodam</h1>
-        <h1><font size="5" color="white">Cek khodam anda sekarang!.</p>
-        <form id="khodamForm">
-            <input type="text" id="name" name="name" placeholder="Masukkan nama Anda">
-            <button type="submit">Cek</button>
-        </form>
-    </div>
-
-    <div class="container" id="result-page" style="display: none;">
-        <h1>Hasil Cek Khodam</h1>
-        <div id="khodam-info"></div>
-        <button type="button" id="back-button">Ulang</button>
-    </div>
-
-    <script>
-            const khodamData = [
-        "Kangkung mewing",
-        "Kecoa Afrika",
-        "Opet Kalimantan",
-        "Durian Gundul",
-        "Tuyul Mulet",
-        "Belatung Nangka",
-        "Semen Jawa",
-        "Tunggu kiris",
-        "Buaya putih",
-        "Naga sumbing",
-        "Kuda hitam",
-        "Nyi roro Kidul",
-        "Nenek gayung",
-        "Genderuwo sixpack",
-        "Kodok sumatra",
-        "Jembut kuyang",
-        "Jambu mengkal",
-    ];
-
-        const form = document.querySelector('#khodamForm');
-        const nameInput = document.querySelector('#name');
-        const khodamInfoDiv = document.querySelector('#khodam-info');
-        const mainPage = document.querySelector('#main-page');
-        const resultPage = document.querySelector('#result-page');
-        const backButton = document.querySelector('#back-button');
-
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const name = nameInput.value.trim();
-            if (name === '') {
-                alert('Harap Masukan Nama Terlebih Dahulu');
-                return;
-            }
-            const randomKhodam = khodamData[Math.floor(Math.random() * khodamData.length)];
-            khodamInfoDiv.innerHTML = `Khodam dari ${name} adalah ${randomKhodam}.`;
-            mainPage.style.display = 'none';
-            resultPage.style.display = 'block';
-        });
-
-        backButton.addEventListener('click', () => {
-            resultPage.style.display = 'none';
-            mainPage.style.display = 'block';
-            nameInput.value = '';
-            khodamInfoDiv.innerHTML = '';
-        });
-    </script>
-    <footer>
-    <p>By <a href="https://t.me/@yzzyourfav" target="_blank">Grezz+</a>Xploit</p>
-</footer>
-
-</body>
-  </html>
+.fa-heart {opacity:.2;color:white;font-size: 20px;position: absolute;animation:  heartMove linear 1;top: -10vh;z-index: 0;}
+@keyframes heartMove {0%{transform: translateY(-10vh) ;} 100%{transform: translateY(100vh) ;}}
+.sembunyi, #kado2, #kado3{display:none !important}
